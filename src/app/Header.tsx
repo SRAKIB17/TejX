@@ -1,10 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 'use client';
-
+import { SiteTitle } from "@/config";
 import { useEffect, useRef, useState } from "react";
 import { IoMdSearch } from "react-icons/io";
 import DocsViewerSearch from "./DocsViewerSearch";
-
 
 type Props = {}
 
@@ -65,15 +64,17 @@ export default function Header({ }: Props) {
         <>
             <header className="bg-base-100 border-b-2 p-4 sticky top-0 h-16 z-50 flex items-center justify-between">
                 <div>
-                    {/* <h1 className="text-xl font-bold capitalize">
+                    <h1 className="text-xl font-bold capitalize">
+                        {
+                            SiteTitle
+                        }
+                    </h1>
+
                     {
-                        info?.title
+                        // Boolean(info?.version?.image) &&
+                        // <img src={info?.version?.image} alt={info?.title} className="h-5" />
                     }
-                </h1>
-                {
-                    Boolean(info?.version?.image) &&
-                    <img src={info?.version?.image} alt={info?.title} className="h-5" />
-                } */}
+
                 </div>
                 <div className="flex items-center gap-4">
                     <div ref={searchRef} className="border px-4 items-center flex input-bordered h-11 hover:bg-base-200 rounded-md pr-1 cursor-pointer" onClick={() => setIsSearchOpen(true)}>
