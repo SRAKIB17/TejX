@@ -43,6 +43,11 @@ export default function Header({ }: Props) {
                 setIsSearchOpen(true);
                 // setTimeout(() => inputRef.current?.focus(), 100);
             }
+            if (e.key === "Escape") {
+                e.preventDefault();
+                setIsSearchOpen(false);
+                // setTimeout(() => inputRef.current?.focus(), 100);
+            }
         };
         window.addEventListener("keydown", handleKeyDown);
         return () => window.removeEventListener("keydown", handleKeyDown);
@@ -77,9 +82,9 @@ export default function Header({ }: Props) {
 
                 </div>
                 <div className="flex items-center gap-4">
-                    <div ref={searchRef} className="border px-4 items-center flex input-bordered h-11 hover:bg-base-200 rounded-md pr-1 cursor-pointer" onClick={() => setIsSearchOpen(true)}>
-                        <p>Search (Ctrl+k)</p>
-                        <button className="flex items-center justify-center px-4 py-2 rounded-md transition-all ml-1">
+                    <div ref={searchRef} className="sm:border px-0 sm:px-4 items-center flex input-bordered h-11 hover:bg-base-200 rounded-md pr-0 sm:pr-1 cursor-pointer" onClick={() => setIsSearchOpen(true)}>
+                        <p className="hidden sm:block">Search (Ctrl+k)</p>
+                        <button className="flex items-center justify-center px-3 text-xl sm:px-4 py-2 rounded-md transition-all ml-1">
                             <IoMdSearch />
                         </button>
                     </div>
