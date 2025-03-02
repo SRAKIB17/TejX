@@ -1,4 +1,4 @@
-import { SiteTitle } from "@/config";
+import { SiteDescription, SiteTitle } from "@/config";
 import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: { params: { path: string[] } 
 
     return {
         title: `${dx.name} | Documentation | ${SiteTitle}`,
-        description: `Read the documentation for ${dx.name}. Learn about ${dx.name} in detail.`,
+        description: `${SiteDescription}. Read the documentation for ${dx.name}. Learn about ${dx.name} in detail.`,
         openGraph: {
             title: `${dx.name} | Documentation`,
             description: `Explore the ${dx.name} documentation page.`,
