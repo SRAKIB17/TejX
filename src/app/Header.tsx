@@ -1,7 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 'use client';
 import { SiteTitle } from "@/config";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { FaGithub } from "react-icons/fa";
 import { IoMdSearch } from "react-icons/io";
 import DocsViewerSearch from "./DocsViewerSearch";
 
@@ -88,12 +90,9 @@ export default function Header({ }: Props) {
                             <IoMdSearch />
                         </button>
                     </div>
-                    {
-                        // Boolean(info?.github) &&
-                        // <Link href={info?.github || ""}>
-                        //     <FaGithub size={24} />
-                        // </Link>
-                    }
+                    <Link href={'https://github.com/srakib17/jetcore'}>
+                        <FaGithub size={24} />
+                    </Link>
                     <label className="swap swap-rotate">
                         {/* this hidden checkbox controls the state */}
                         <input type="checkbox" checked={theme == 'dark'} />
