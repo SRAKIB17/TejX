@@ -70,7 +70,7 @@ export default function page({ params }: Props) {
 }
 
 export function generateStaticParams(props: { params: { path: any } }) {
-    return docs?.files?.map(r => {
+    return docs?.files?.filter(r => r.path).map(r => {
         return {
             path: r?.path?.split("/"),
         }
