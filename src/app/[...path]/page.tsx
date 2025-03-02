@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: { params: { path: string[] } 
         description: `${SiteDescription}. Read the documentation for ${dx.name}. Learn about ${dx.name} in detail.`,
         openGraph: {
             title: `${dx.name} | Documentation`,
-            description: `Explore the ${dx.name} documentation page.`,
+            description: `${SiteDescription}. Explore the ${dx.name} documentation page.`,
             url: `/${dx.path}`,
             type: "article",
         },
