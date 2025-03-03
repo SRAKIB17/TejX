@@ -62,10 +62,10 @@ export default function PackageLayout({ children }: Props) {
 }
 
 
-export function generateStaticParams(props: { params: { path: any } }) {
-  return docs?.files?.filter(r => r.path).map(r => {
-    return {
-      path: r?.path?.split("/"),
-    }
-  })
-}
+// export function generateStaticParams(props: { params: { path: any } }) {
+//   return docs?.files?.filter(r => r.path).map(r => {
+//     return {
+//       path: r?.path?.split("/"),
+//     }
+//   })
+// }
