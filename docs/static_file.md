@@ -1,4 +1,3 @@
-Here’s an **enhanced developer-friendly documentation** with improvements in structure, explanations, and detailed options handling, including `cacheControl` as a `string` type.  
 
 ---
 
@@ -13,7 +12,7 @@ The `static()` method allows serving static files (HTML, CSS, JS, images, videos
 ### **1️⃣ Serve Static Files from the Root (`/`)**  
 
 ```typescript
-app.static("public");
+app.static("/static","./public");
 ```
 
 - Serves files from the **"public"** directory.  
@@ -31,11 +30,12 @@ app.static("/static", "assets");
 ### **3️⃣ Serve Static Files with Options**  
 
 ```typescript
-app.static("public", { cacheControl: "public, max-age=3600", index: "index.html" });
+app.static("./public", { 
+    cacheControl: "public, max-age=3600", 
+     });
 ```
 
 - Enables HTTP caching with **Cache-Control headers**.  
-- Uses `"index.html"` as the default file when accessing a directory.  
 
 ---
 
@@ -63,11 +63,7 @@ The `option` parameter allows configuring various settings for serving static fi
 | Option          | Type      | Default  | Description |
 |----------------|----------|----------|-------------|
 | `cacheControl` | `string` | `"no-cache"` | Controls HTTP caching for files. Example: `"public, max-age=3600"` for 1-hour caching. |
-| `index`        | `string` | `"index.html"` | Specifies the default file when accessing a directory. |
-| `gzip`         | `boolean` | `false` | Enables **Gzip compression** for faster file delivery. |
-| `brotli`       | `boolean` | `false` | Enables **Brotli compression** (smaller file size than Gzip). |
-| `etag`         | `boolean` | `true` | Enables **ETag headers** to optimize browser caching. |
-| `dotfiles`     | `"allow" \| "deny" \| "ignore"` | `"ignore"` | Controls access to hidden files (`.env`, `.gitignore`). |
+| `header`         | `HeaderResponse` | `undefined` | Record of headers |
 
 ---
 
@@ -76,43 +72,15 @@ The `option` parameter allows configuring various settings for serving static fi
 ### **1️⃣ Enable Cache-Control for Performance**
 
 ```typescript
-app.static("public", { cacheControl: "public, max-age=86400" });  // 1-day caching
+app.static("./public", { cacheControl: "public, max-age=86400" });  // 1-day caching
 ```
-
-- Ensures browsers cache static files, reducing server load.
-
-### **2️⃣ Use a Custom Index File**
-
-```typescript
-app.static("static", { index: "home.html" });
-```
-
-- Serves `home.html` instead of the default `index.html`.
-
-### **3️⃣ Enable Gzip & Brotli Compression**
-
-```typescript
-app.static("public", { gzip: true, brotli: true });
-```
-
-- Compresses static files before sending them to the client.
-
-### **4️⃣ Prevent Access to Dotfiles**
-
-```typescript
-app.static("config", { dotfiles: "deny" });
-```
-
-- Blocks access to `.env`, `.gitignore`, and other hidden files.
-
----
 
 ## **🚀 Return Value**
 
 Returns the current instance (`this`), allowing **method chaining**:
 
 ```typescript
-app.static("public").use(middlewareFunction);
+app.static("./public").use(middlewareFunction);
 ```
 
 ---
@@ -132,8 +100,15 @@ This **enhanced documentation** includes:
 ✅ **Real-world use cases**  
 ✅ **Security & performance best practices**  
 
-Let me know if you need additional refinements! 🚀🔥
-
 <https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control>
 
-## with can  overight
+## **You can Overwrite static path**
+
+```ts
+server.get('/static/image.png',(ctx)=>{
+    //-------------
+    //------------- code 
+    //-------------
+    //-------------
+})
+```
