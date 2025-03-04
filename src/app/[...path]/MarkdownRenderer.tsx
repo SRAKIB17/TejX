@@ -58,18 +58,42 @@ export default function MarkdownRenderer({ markdown }: { markdown: string }) {
         /<pre><code class="([^"]*)">([\s\S]*?)<\/code><\/pre>/g,
         (match: any, classNames: any, codeContent: any) => {
             return `
-        <div class="relative group">
+        <div class="relative">
           <button 
-            class="absolute right-2 rounded top-2 btn btn-xs btn-outline hidden group-hover:block copy-btn btn-accent"
+            class="absolute right-2 rounded top-2 btn btn-xs btn-outline hover:text-[white!important] copy-btn btn-accent"
             data-clipboard-text="${codeContent.trim()}"
           >
-            Copy
+            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="18px" width="18px" xmlns="http://www.w3.org/2000/svg">
+            <path fill="none" d="M0 0h24v24H0z">
+            </path>
+            <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path>
+            </svg>
           </button>
           <pre><code class="${classNames}">${codeContent}</code></pre>
         </div>
       `;
         }
     );
+    // const updatedHtmlContent = (htmlContent as any)?.replace(
+    //     /<pre><code class="([^"]*)">([\s\S]*?)<\/code><\/pre>/g,
+    //     (match: any, classNames: any, codeContent: any) => {
+    //         return `
+    //     <div class="relative group">
+    //       <button 
+    //         class="absolute right-2 rounded top-2 btn btn-xs btn-outline hidden group-hover:block copy-btn btn-accent"
+    //         data-clipboard-text="${codeContent.trim()}"
+    //       >
+    //         <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="20px" width="20px" xmlns="http://www.w3.org/2000/svg">
+    //         <path fill="none" d="M0 0h24v24H0z">
+    //         </path>
+    //         <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path>
+    //         </svg>
+    //       </button>
+    //       <pre><code class="${classNames}">${codeContent}</code></pre>
+    //     </div>
+    //   `;
+    //     }
+    // );
 
     return (
         <div
