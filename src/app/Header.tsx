@@ -3,6 +3,7 @@
 import { SiteTitle } from "@/config";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { CgMenuRightAlt } from "react-icons/cg";
 import { FaGithub } from "react-icons/fa";
 import { IoMdSearch } from "react-icons/io";
 import DocsViewerSearch from "./DocsViewerSearch";
@@ -84,13 +85,16 @@ export default function Header({ }: Props) {
 
                 </div>
                 <div className="flex items-center gap-4">
-                    <div ref={searchRef} className="sm:border px-0 sm:px-4 items-center flex input-bordered h-11 hover:bg-base-200 rounded-md pr-0 sm:pr-1 cursor-pointer" onClick={() => setIsSearchOpen(true)}>
+
+
+
+                    <div ref={searchRef} className="sm:border gap-2 px-0 sm:px-4 items-center flex input-bordered h-11 hover:bg-base-200 rounded-md pr-0 sm:pr-1 cursor-pointer" onClick={() => setIsSearchOpen(true)}>
                         <p className="hidden sm:block">Search (Ctrl+k)</p>
-                        <button className="flex items-center justify-center px-3 text-xl sm:px-4 py-2 rounded-md transition-all ml-1">
+                        <button className="flex items-center justify-center text-3xl rounded-md transition-all">
                             <IoMdSearch />
                         </button>
                     </div>
-                    <Link href={'https://github.com/srakib17/jetcore'}>
+                    <Link href={'https://github.com/srakib17/TejX'}>
                         <FaGithub size={24} />
                     </Link>
                     <label className="swap swap-rotate">
@@ -115,6 +119,13 @@ export default function Header({ }: Props) {
                                 d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z" />
                         </svg>
 
+                    </label>
+
+                    <label
+                        htmlFor="content-sidebar"
+                        className="cursor-pointer h-14 border-b flex items-center w-full bg-base-100 bg-opacity-80 md:hidden z-50"
+                    >
+                        <CgMenuRightAlt size={28} />
                     </label>
                 </div>
 

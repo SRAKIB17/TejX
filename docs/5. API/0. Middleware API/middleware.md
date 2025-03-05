@@ -7,7 +7,7 @@
 
 ```ts
 // Good practice - fail fast
-server.use((ctx, next) => {
+app.use((ctx, next) => {
   if (!ctx.headers.get('x-api-key')) {
     return ctx.status(401);
   }
@@ -15,7 +15,7 @@ server.use((ctx, next) => {
 });
 
 // Error handling
-server.use(async (ctx, next) => {
+app.use(async (ctx, next) => {
   try {
     await next();
   } catch (error) {
@@ -39,7 +39,7 @@ server.use(async (ctx, next) => {
 
 ```ts
 // Global error handler
-server.use(async (ctx, next) => {
+app.use(async (ctx, next) => {
   try {
     await next();
   } catch (error) {
@@ -53,7 +53,7 @@ server.use(async (ctx, next) => {
 });
 
 // Route-specific error handling
-server.get('/danger', async (ctx) => {
+app.get('/danger', async (ctx) => {
   try {
     await riskyOperation();
   } catch (error) {
@@ -103,7 +103,7 @@ type MiddlewareType = (
 ### Error Handling
 
 ```typescript
-server.use(async (ctx, next) => {
+app.use(async (ctx, next) => {
   try {
     await next();
   } catch (err) {
@@ -119,27 +119,27 @@ server.use(async (ctx, next) => {
 ### Basic Routing
 
 ```typescript
-server.get('/', (ctx) => ctx.text('Home'));
-server.post('/users', createUser);
+app.get('/', (ctx) => ctx.text('Home'));
+app.post('/users', createUser);
 ```
 
 ### Middleware Chain
 
 ```typescript
-server.use(logger);
+app.use(logger);
 
-server.use('/admin', (ctx, next) => {
+app.use('/admin', (ctx, next) => {
   if (!ctx.user.isAdmin) ctx.throw(403);
   return next();
 });
 
-server.get('/admin/dashboard', adminDashboard);
+app.get('/admin/dashboard', adminDashboard);
 ```
 
 ### Route Grouping
 
 ```typescript
-server.group('/api', (api) => {
+app.group('/api', (api) => {
   api.group('/v1', (v1) => {
     v1.get('/users', getUsersV1);
   });
@@ -157,7 +157,7 @@ const authRouter = new Router();
 authRouter.post('/login', loginHandler);
 authRouter.post('/register', registerHandler);
 
-server.use('/auth', [rateLimiter], authRouter);
+app.use('/auth', [rateLimiter], authRouter);
 ```
 
 ---
@@ -180,14 +180,14 @@ server.use('/auth', [rateLimiter], authRouter);
 
 ```typescript
 // Global first
-server.use(cors());
-server.use(bodyParser());
+app.use(cors());
+app.use(bodyParser());
 
 // Then specific routes
-server.post('/upload', fileUpload, uploadHandler);
+app.post('/upload', fileUpload, uploadHandler);
 
 // Error handlers last
-server.use(errorFormatter);
+app.use(errorFormatter);
 ```
 
 3. **Performance Tips**
@@ -203,7 +203,7 @@ server.use(errorFormatter);
 ### Custom Error Middleware
 
 ```typescript
-server.use(async (ctx, next) => {
+app.use(async (ctx, next) => {
   try {
     await next();
   } catch (err) {
@@ -231,7 +231,7 @@ server.use(async (ctx, next) => {
 **Route Conflicts**
 
 - More specific routes first
-- Use `server.all()` carefully
+- Use `app.all()` carefully
 - Check sub-router mounting points
 
 **Type Errors**

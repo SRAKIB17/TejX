@@ -31,13 +31,9 @@ export default function PackageLayout({ children }: Props) {
                 type="checkbox"
                 className="submenu" id={'content-sidebar'}
               />
-
-              <label htmlFor="content-sidebar" className="fixed left-0 cursor-pointer top-16 h-14 border-b flex items-center px-4 w-full bg-base-100 bg-opacity-80 md:hidden z-50">
-                Menu
-              </label>
               <aside
                 role="content-sidebar"
-                className="sticky bg-base-100 z-40 top-16 h-[calc(100vh-64px)] overflow-y-auto max-h-screen w-72 md:w-full xl:w-72 border-r-2 hidden md:flex flex-col justify-between"
+                className="sticky bg-base-100 top-16 h-[calc(100vh-64px)] overflow-y-auto max-h-screen w-72 md:w-full xl:w-72 border-r-2 hidden md:flex flex-col justify-between z-[100]"
               >
                 <div className="sticky top-0 flex justify-end md:hidden">
                   <label htmlFor="content-sidebar" className="sticky w-fit top-0 right-0 rounded-none btn btn-sm btn-error text-white z-50">

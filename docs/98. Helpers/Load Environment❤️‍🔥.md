@@ -61,7 +61,7 @@ interface CustomContext {
 **Usage in Middleware:**
 
 ```typescript
-server.use(async (ctx, next) => {
+app.use(async (ctx, next) => {
   ctx.requestId = crypto.randomUUID();
   ctx.user = await authenticate(ctx.headers.get('Authorization'));
   return await next();
@@ -104,7 +104,7 @@ const server = new Accelero({
 });
 
 // Access env in middleware
-server.use((ctx) => {
+app.use((ctx) => {
   if (ctx.env.API_KEY !== 'expected') {
     ctx.status(401).text('Unauthorized');
   }
@@ -125,7 +125,7 @@ const server = new Accelero<AppContext>({
 });
 
 // Middleware to extend context
-server.use(async (ctx, next) => {
+app.use(async (ctx, next) => {
   ctx.analytics = new Analytics(ctx.env.ANALYTICS_KEY);
   ctx.analytics.flush();
   return await next();

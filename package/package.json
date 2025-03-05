@@ -1,6 +1,6 @@
 {
-    "name": "jetcore",
-    "version": "1.0.1",
+    "name": "tejx",
+    "version": "1.0.0",
     "description": "A high-performance server framework for Node.js, Bun, and Deno",
     "main": "dist/index.js",
     "module": "dist/index.mjs",
