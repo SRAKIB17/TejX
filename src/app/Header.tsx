@@ -7,6 +7,7 @@ import { CgMenuRightAlt } from "react-icons/cg";
 import { FaGithub } from "react-icons/fa";
 import { IoMdSearch } from "react-icons/io";
 import DocsViewerSearch from "./DocsViewerSearch";
+import { version } from "../../package/package.json"
 
 type Props = {}
 
@@ -72,10 +73,17 @@ export default function Header({ }: Props) {
         <>
             <header className="bg-base-100 border-b-2 p-4 sticky top-0 h-16 z-50 flex items-center justify-between">
                 <div>
-                    <h1 className="text-xl font-bold capitalize">
-                        {
-                            SiteTitle
-                        }
+                    <h1 className="text-xl font-bold capitalize flex flex-col">
+                        <span>
+                            {
+                                SiteTitle
+                            }
+                        </span>
+                        <span className="text-xs text-primary font-extrabold">
+                            V  {
+                                version
+                            }
+                        </span>
                     </h1>
 
                     {
@@ -94,7 +102,7 @@ export default function Header({ }: Props) {
                             <IoMdSearch />
                         </button>
                     </div>
-                    <Link href={'https://github.com/srakib17/TejX'}>
+                    <Link href={'https://github.com/srakib17/TezX'}>
                         <FaGithub size={24} />
                     </Link>
                     <label className="swap swap-rotate">
